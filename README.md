@@ -16,3 +16,6 @@ Host private_host
     IdentityFile ~/path/to/private_key
     ProxyJump bastion
 ```
+# vpn test info
+bastion_IP = 35.210.251.102
+someinternalhost_IP = 10.132.0.3
