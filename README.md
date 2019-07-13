@@ -35,3 +35,8 @@ gcloud compute instances create reddit-app-3 `
   --restart-on-failure `
   --metadata-from-file startup-script=startup_script.sh
 ```
+
+# add firewall rule from gcloud
+```
+gcloud compute firewall-rules create default-puma-server --allow tcp:9292 --source-tags=puma-server --source-ranges=0.0.0.0/0
+```
