@@ -19,3 +19,7 @@ Host private_host
 # vpn test info
 bastion_IP = 35.210.251.102
 someinternalhost_IP = 10.132.0.3
+
+#testapp info
+testapp_IP = 35.195.78.188
+testapp_port = 9292
