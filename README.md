@@ -23,3 +23,15 @@ someinternalhost_IP = 10.132.0.3
 #testapp info
 testapp_IP = 35.195.78.188
 testapp_port = 9292
+
+# provisioning instance with startup script
+```
+gcloud compute instances create reddit-app-3 `
+  --boot-disk-size=10GB `
+  --image-family ubuntu-1604-lts `
+  --image-project=ubuntu-os-cloud `
+  --machine-type=g1-small `
+  --tags puma-server `
+  --restart-on-failure `
+  --metadata-from-file startup-script=startup_script.sh
+```
