@@ -1,0 +1,34 @@
+{
+    "builders": [
+        {
+            "type": "googlecompute",
+            "project_id": "{{user `my_project_id`}}",
+            "image_name": "{{user `target_image_name`}}",
+            "image_family": "{{user `target_image_family`}}",
+            "source_image_family": "{{user `source_image_family`}}",
+            "zone": "europe-west1-b",
+            "ssh_username": "appuser",
+            "machine_type": "{{user `instance_type`}}",
+            "disk_size": 10,
+            "disk_type": "pd-ssd",
+            "image_description": "{{user `image_description`}}",
+            "network": "default",
+            "image_labels": {
+                "environment": "dev",
+                "maintainer": "appuser"
+            }
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "script": "scripts/install_ruby.sh",
+            "execute_command": "sudo {{.Path}}"
+        },
+        {
+            "type": "shell",
+            "script": "scripts/install_mongodb.sh",
+            "execute_command": "sudo {{.Path}}"
+        }
+    ]
+}

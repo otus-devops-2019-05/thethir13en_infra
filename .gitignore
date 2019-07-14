@@ -1,0 +1,6 @@
+# Ignore by directories
+
+# Ignore by filetypes
+
+# Ignore by filenames
+/packer/variables.json
