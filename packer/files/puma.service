@@ -1,0 +1,10 @@
+[Unit]
+Description=Reddit Application OTUS.
+
+[Service]
+Type=simple
+WorkingDirectory=/srv/puma
+ExecStart=/usr/local/bin/puma
+
+[Install]
+WantedBy=multi-user.target
