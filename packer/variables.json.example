@@ -1,0 +1,8 @@
+{
+    "my_project_id": "unusual-module-2148915",
+    "target_image_name": "reddit-base-{{timestamp}}",
+    "target_image_family": "reddit-base",
+    "source_image_family": "ubuntu-1604-lts",
+    "instance_type": "f1-micro",
+    "image_description": "Base image for Reddit-app"
+}
