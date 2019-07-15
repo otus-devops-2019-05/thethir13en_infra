@@ -1,6 +1,9 @@
 # Ignore by directories
-
+.terraform/
 # Ignore by filetypes
-
+*.tfstate
+*.tfstate.*.backup
+*.tfstate.backup
+*.tfvars
 # Ignore by filenames
 /packer/variables.json
