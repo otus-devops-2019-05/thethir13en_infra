@@ -40,3 +40,16 @@ gcloud compute instances create reddit-app-3 `
 ```
 gcloud compute firewall-rules create default-puma-server --allow tcp:9292 --source-tags=puma-server --source-ranges=0.0.0.0/0
 ```
+
+# terraform
+> Для добавления ключей в проект, необходимо описать данный ресурс и добавить ключи в метадату.
+> Чтобы добавить несколько ключей, их необходимо написать друг-за-другом без пробела и разделительных знаков.
+
+* Пример :
+```
+resource "google_compute_project_metadata" "yourproject" {
+  metadata = {
+    ssh-keys = "appuser:${file(var.public_key_path)}appuser1:${file(var.public_key_path)}"
+  }
+}
+```
