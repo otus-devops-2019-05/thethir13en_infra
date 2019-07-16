@@ -13,7 +13,7 @@ resource "google_compute_target_pool" "default" {
   session_affinity = "NONE"
 
   instances = [
-    "europe-west1-b/reddit-app"
+    "europe-west1-b/reddit-app",
   ]
 
   health_checks = [
