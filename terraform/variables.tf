@@ -25,6 +25,6 @@ variable disk_image {
 }
 
 variable "app_count" {
-  default  = "1"
+  default     = "1"
   description = "Count of provisioned application nodes"
 }
