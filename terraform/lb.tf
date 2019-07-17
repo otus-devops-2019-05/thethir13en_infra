@@ -14,6 +14,7 @@ resource "google_compute_target_pool" "default" {
 
   instances = [
     "europe-west1-b/reddit-app",
+    "europe-west1-b/reddit-app2"
   ]
 
   health_checks = [
