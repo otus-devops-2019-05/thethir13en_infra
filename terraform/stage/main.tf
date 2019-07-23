@@ -1,6 +1,10 @@
 terraform {
   # required version
   required_version = ">= 0.11.7"
+  backend "gcs" {
+    bucket  = "mybucket-thirt13en"
+    prefix  = "terraform/state"
+  }
 }
 
 provider "google" {
