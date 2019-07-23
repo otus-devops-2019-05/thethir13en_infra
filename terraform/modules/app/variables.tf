@@ -13,10 +13,10 @@ variable private_key_path {
 
 variable app_disk_image {
   description = "Disk image for reddit app"
-  default = "reddit-app-base"
+  default     = "reddit-app-base"
 }
 
 variable "db_url" {
   description = "Hostname or IP of MongoDB"
-  default = ""
+  default     = ""
 }

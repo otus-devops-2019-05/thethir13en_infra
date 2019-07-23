@@ -9,5 +9,5 @@ variable public_key_path {
 
 variable db_disk_image {
   description = "MongoDB disk image for reddit app"
-  default = "reddit-db-base"
+  default     = "reddit-db-base"
 }
