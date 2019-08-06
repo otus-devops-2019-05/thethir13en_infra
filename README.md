@@ -43,13 +43,13 @@ gcloud compute firewall-rules create default-puma-server --allow tcp:9292 --sour
 
 # terraform
 > Для добавления ключей в проект, необходимо описать данный ресурс и добавить ключи в метадату.
-> Чтобы добавить несколько ключей, их необходимо написать друг-за-другом без пробела и разделительных знаков.
+> Чтобы добавить несколько ключей, их необходимо написать друг-за-другом разделив знаками переноса строки '\n'.
 
 * Пример :
 ```
 resource "google_compute_project_metadata" "yourproject" {
   metadata = {
-    ssh-keys = "appuser:${file(var.public_key_path)}appuser1:${file(var.public_key_path)}"
+    ssh-keys = "appuser:${file(var.public_key_path)} \nappuser1:${file(var.public_key_path)}"
   }
 }
 ```
