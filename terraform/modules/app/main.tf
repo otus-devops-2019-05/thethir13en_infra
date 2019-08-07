@@ -1,36 +1,21 @@
-terraform {
-  # required version
-  required_version = ">= 0.11.7"
-}
-
-provider "google" {
-  version = "2.0.0"
-  project = "${var.project}"
-  region  = "${var.region}"
-}
-
-resource "google_compute_project_metadata" "regal-module-244315" {
-  metadata = {
-    ssh-keys = "appuser:${file(var.public_key_path)} \nappuser1:${file(var.public_key_path)}"
-  }
-}
-
 resource "google_compute_instance" "app" {
-  count        = "${var.app_count}"
-  name         = "reddit-app${count.index}"
+  name         = "reddit-app"
   machine_type = "g1-small"
   zone         = "europe-west1-b"
   tags         = ["reddit-app"]
 
   boot_disk {
     initialize_params {
-      image = "${var.disk_image}"
+      image = "${var.app_disk_image}"
     }
   }
 
   network_interface {
-    network       = "default"
-    access_config = {}
+    network = "default"
+
+    access_config = {
+      nat_ip = "${google_compute_address.app_ip.address}"
+    }
   }
 
   metadata {
@@ -45,12 +30,16 @@ resource "google_compute_instance" "app" {
   }
 
   provisioner "file" {
-    source      = "files/puma.service"
+    source      = "${path.module}/files/puma.service"
     destination = "/tmp/puma.service"
   }
 
   provisioner "remote-exec" {
-    script = "files/deploy.sh"
+    inline = "sed -i '/Service]/a Environment=DATABASE_URL=${var.db_url}' /tmp/puma.service"
+  }
+
+  provisioner "remote-exec" {
+    script = "${path.module}/files/deploy.sh"
   }
 }
 
@@ -65,4 +54,8 @@ resource "google_compute_firewall" "firewall_puma" {
 
   source_ranges = ["0.0.0.0/0"]
   target_tags   = ["reddit-app"]
+}
+
+resource "google_compute_address" "app_ip" {
+  name = "reddit-app-ip"
 }
