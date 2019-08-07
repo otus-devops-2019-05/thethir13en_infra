@@ -1,0 +1,11 @@
+project = "project-244165"
+
+zone = "europe-west1-b"
+
+public_key_path = "~/.ssh/appuser.pub"
+
+private_key_path = "~/.ssh/appuser"
+
+disk_image = "reddit-base"
+
+app_count = "1"
