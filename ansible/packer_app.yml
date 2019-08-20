@@ -1,5 +1,6 @@
 ---
 - name: Install ruby and bundler
+  hosts: all
   become: true
   tasks:
   - name: Install required packages
