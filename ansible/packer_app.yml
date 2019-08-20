@@ -1,0 +1,13 @@
+---
+- name: Install ruby and bundler
+  become: true
+  tasks:
+  - name: Install required packages
+    apt:
+      name: {{ item }}
+      state: latest
+      update_cache: yes
+    loop:
+      - ruby-full
+      - ruby-bundler
+      - build-essential

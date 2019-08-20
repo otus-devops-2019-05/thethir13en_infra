@@ -1,0 +1,22 @@
+---
+- name: Install ruby and bundler
+  become: true
+  tasks:
+  - name: Add an Apt signing key
+    apt_key:
+      keyserver: keyserver.ubuntu.com:80
+      id: EA312927
+      state: present
+
+  - name: Add MongoDB repository
+    apt_repository:
+      repo: deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse
+      state: present
+
+  - name: Install required packages
+    apt:
+      name: {{ item }}
+      state: latest
+      update_cache: yes
+    loop:
+      - mongodb-org
