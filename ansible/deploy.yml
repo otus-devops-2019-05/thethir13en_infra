@@ -1,8 +1,6 @@
 ---
 - name: Deploy app
   hosts: reddit-app
-  tags:
-    - deploy-tag
   become: true
   tasks:
   - name: Fetch the latest version of application code
