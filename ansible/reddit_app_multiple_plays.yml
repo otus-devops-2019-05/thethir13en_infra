@@ -1,6 +1,6 @@
 ---
 - name: Configure MongoDB
-  hosts: db
+  hosts: reddit-db
   tags:
     - db-tag
   become: true
@@ -19,7 +19,7 @@
     service: name=mongod state=restarted
 
 - name: Configure App
-  hosts: app
+  hosts: reddit-app
   tags:
     - app-tag
   become: true
@@ -45,7 +45,7 @@
     systemd: name=puma state=restarted
 
 - name: Deploy app
-  hosts: app
+  hosts: reddit-app
   tags:
     - deploy-tag
   become: true

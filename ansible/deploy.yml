@@ -1,5 +1,5 @@
 - name: Deploy app
-  hosts: app
+  hosts: reddit-app
   tags:
     - deploy-tag
   become: true
