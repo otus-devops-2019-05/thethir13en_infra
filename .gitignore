@@ -5,5 +5,6 @@
 *.tfstate.*.backup
 *.tfstate.backup
 *.tfvars
+*.retry
 # Ignore by filenames
 /packer/variables.json
