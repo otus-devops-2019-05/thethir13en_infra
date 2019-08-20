@@ -22,8 +22,7 @@
     "provisioners": [
         {
             "type": "ansible",
-            "script": "ansible/packer_db.yml",
-            "execute_command": "sudo {{.Path}}"
+            "playbook_file": "ansible/packer_db.yml"
         }
     ]
 }
