@@ -2,7 +2,7 @@ resource "google_compute_instance" "app" {
   name         = "reddit-app"
   machine_type = "g1-small"
   zone         = "europe-west1-b"
-  tags         = ["reddit-app"]
+  tags         = ["reddit-app","nginx"]
 
   boot_disk {
     initialize_params {
@@ -54,6 +54,19 @@ resource "google_compute_firewall" "firewall_puma" {
 
   source_ranges = ["0.0.0.0/0"]
   target_tags   = ["reddit-app"]
+}
+
+resource "google_compute_firewall" "firewall_nginx" {
+  name    = "allow-nginx-default"
+  network = "default"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["80"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+  target_tags   = ["nginx"]
 }
 
 resource "google_compute_address" "app_ip" {

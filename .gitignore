@@ -6,5 +6,9 @@
 *.tfstate.backup
 *.tfvars
 *.retry
+# Ignore Key Files
+*.key
 # Ignore by filenames
 /packer/variables.json
+# Ignore Ansible roles
+jdauphant.nginx
