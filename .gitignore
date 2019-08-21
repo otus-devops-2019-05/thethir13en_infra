@@ -8,3 +8,5 @@
 *.retry
 # Ignore by filenames
 /packer/variables.json
+# Ignore Ansible roles
+jdauphant.nginx
