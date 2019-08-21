@@ -1,0 +1,11 @@
+---
+plugin: gcp_compute
+projects:
+  - my-project
+# zones:
+#   - "europe-west1-b"
+hostnames:
+  - name
+filters: []
+auth_kind: serviceaccount
+service_account_file: "/Users/temikus/.gcp/project.json"
